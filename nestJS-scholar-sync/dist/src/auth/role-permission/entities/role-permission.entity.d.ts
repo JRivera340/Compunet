@@ -1,0 +1,7 @@
+import { Role } from "../../role/entities/role.entity";
+import { Permission } from "../../permission/entities/permission.entity";
+export declare class RolePermission {
+    id: number;
+    role: Role;
+    permission: Permission;
+}
