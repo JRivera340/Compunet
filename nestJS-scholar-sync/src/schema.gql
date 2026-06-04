@@ -6,6 +6,13 @@ type AuthPayload {
   access_token: String!
 }
 
+input CreatePostDto {
+  dateAdded: DateTime
+  question: String!
+  title: String!
+  userId: Int!
+}
+
 input CreateUserDto {
   email: String!
   firstName: String!
@@ -28,10 +35,13 @@ type MessageResponse {
 }
 
 type Mutation {
+  createPost(input: CreatePostDto!): Post!
   createUser(input: CreateUserDto!): User!
   login(input: UserLoginDto!): AuthPayload!
   logout: MessageResponse!
+  removePost(id: Int!): MessageResponse!
   removeUser(id: Int!): MessageResponse!
+  updatePost(id: Int!, input: UpdatePostDto!): Post!
   updateUser(id: Int!, input: UpdateUserDto!): User!
 }
 
@@ -46,6 +56,8 @@ type Post {
 
 type Query {
   healthCheck: String!
+  post(id: Int!): Post!
+  posts: [Post!]!
   user(id: Int!): User!
   users: [User!]!
 }
@@ -60,6 +72,13 @@ type Reply {
   replies: [Reply!]
   replyMessage: String!
   user: User!
+}
+
+input UpdatePostDto {
+  dateAdded: DateTime
+  question: String
+  title: String
+  userId: Int
 }
 
 input UpdateUserDto {
