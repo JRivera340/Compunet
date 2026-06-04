@@ -2,5 +2,5 @@ import { InputType, PartialType } from '@nestjs/graphql';
 
 import { CreateReplyDto } from './create-reply.dto';
 
-@InputType()
+@InputType('UpdateReplyInput')
 export class UpdateReplyDto extends PartialType(CreateReplyDto) {}

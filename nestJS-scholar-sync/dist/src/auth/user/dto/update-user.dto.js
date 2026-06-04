@@ -13,6 +13,6 @@ let UpdateUserDto = class UpdateUserDto extends (0, graphql_1.PartialType)(creat
 };
 exports.UpdateUserDto = UpdateUserDto;
 exports.UpdateUserDto = UpdateUserDto = __decorate([
-    (0, graphql_1.InputType)()
+    (0, graphql_1.InputType)('UpdateUserInput')
 ], UpdateUserDto);
 //# sourceMappingURL=update-user.dto.js.map

@@ -9,7 +9,7 @@ export enum Majors {
     MATH = 'Mathematics',
 }
 
-@InputType()
+@InputType('CreateUserInput')
 export class CreateUserDto {
     @Field()
     @IsEmail({}, { message: 'Email must be a valid email address' })

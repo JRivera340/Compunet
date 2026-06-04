@@ -44,6 +44,6 @@ __decorate([
     __metadata("design:type", String)
 ], CreatePostDto.prototype, "dateAdded", void 0);
 exports.CreatePostDto = CreatePostDto = __decorate([
-    (0, graphql_1.InputType)()
+    (0, graphql_1.InputType)('CreatePostInput')
 ], CreatePostDto);
 //# sourceMappingURL=create-post.dto.js.map

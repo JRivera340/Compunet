@@ -91,6 +91,6 @@ __decorate([
     __metadata("design:type", Number)
 ], CreateUserDto.prototype, "level", void 0);
 exports.CreateUserDto = CreateUserDto = __decorate([
-    (0, graphql_1.InputType)()
+    (0, graphql_1.InputType)('CreateUserInput')
 ], CreateUserDto);
 //# sourceMappingURL=create-user.dto.js.map

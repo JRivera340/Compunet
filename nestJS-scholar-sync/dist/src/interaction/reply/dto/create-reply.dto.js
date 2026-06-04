@@ -52,6 +52,6 @@ __decorate([
     __metadata("design:type", String)
 ], CreateReplyDto.prototype, "dateAdded", void 0);
 exports.CreateReplyDto = CreateReplyDto = __decorate([
-    (0, graphql_1.InputType)()
+    (0, graphql_1.InputType)('CreateReplyInput')
 ], CreateReplyDto);
 //# sourceMappingURL=create-reply.dto.js.map

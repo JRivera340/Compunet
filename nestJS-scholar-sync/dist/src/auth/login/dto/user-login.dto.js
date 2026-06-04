@@ -29,6 +29,6 @@ __decorate([
     __metadata("design:type", String)
 ], UserLoginDto.prototype, "password", void 0);
 exports.UserLoginDto = UserLoginDto = __decorate([
-    (0, graphql_1.InputType)()
+    (0, graphql_1.InputType)('LoginInput')
 ], UserLoginDto);
 //# sourceMappingURL=user-login.dto.js.map

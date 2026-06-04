@@ -13,6 +13,6 @@ let UpdateReplyDto = class UpdateReplyDto extends (0, graphql_1.PartialType)(cre
 };
 exports.UpdateReplyDto = UpdateReplyDto;
 exports.UpdateReplyDto = UpdateReplyDto = __decorate([
-    (0, graphql_1.InputType)()
+    (0, graphql_1.InputType)('UpdateReplyInput')
 ], UpdateReplyDto);
 //# sourceMappingURL=update-reply.dto.js.map

@@ -1,7 +1,7 @@
 import { Field, GraphQLISODateTime, InputType, Int } from '@nestjs/graphql';
 import { IsDateString, IsInt, IsOptional, IsPositive, IsString, Length } from 'class-validator';
 
-@InputType()
+@InputType('CreateReplyInput')
 export class CreateReplyDto {
     @Field(() => Int)
     @IsInt({ message: 'Post ID must be an integer' })
