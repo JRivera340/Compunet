@@ -2,6 +2,46 @@
 # THIS FILE WAS AUTOMATICALLY GENERATED (DO NOT MODIFY)
 # ------------------------------------------------------
 
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
+type Post {
+  dateAdded: DateTime!
+  id: Int!
+  question: String!
+  replies: [Reply!]
+  title: String!
+  user: User!
+}
+
 type Query {
   healthCheck: String!
+}
+
+type Reply {
+  approvals: Int!
+  dateAdded: DateTime!
+  id: Int!
+  isValidated: Boolean!
+  likes: Int!
+  post: Post!
+  replies: [Reply!]
+  replyMessage: String!
+  user: User!
+}
+
+type User {
+  email: String!
+  firstName: String!
+  id: Int!
+  lastName: String!
+  level: Int!
+  major1: String!
+  major2: String
+  posts: [Post!]
+  profilePic: String
+  replies: [Reply!]
+  xp: Int!
 }
