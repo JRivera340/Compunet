@@ -51,6 +51,10 @@ export class UserService {
         }));
     }
 
+    async findAllFull(): Promise<User[]> {
+        return this.userRepository.find();
+    }
+
     async findOne(id: number): Promise<User> {
         const user = await this.userRepository.findOne({ where: { id } });
         if (!user) {
