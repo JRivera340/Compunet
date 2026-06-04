@@ -9,12 +9,12 @@ import { UserModule } from 'src/auth/user/user.module';
 import { JwtStrategy } from 'src/auth/strategies/jwt.strategy';
 
 import { AuthService } from './auth.service';
-import { AuthController } from './auth.controller';
+import { AuthResolver } from './auth.resolver';
 
 @Module({
     imports: [
-        UserModule, // Para usar UserService.findByEmailWithRoles
-        TypeOrmModule.forFeature([User]), // Para inyectar UserRepository en JwtStrategy
+        UserModule,
+        TypeOrmModule.forFeature([User]),
         JwtModule.registerAsync({
             inject: [ConfigService],
             useFactory: (config: ConfigService) => ({
@@ -25,8 +25,7 @@ import { AuthController } from './auth.controller';
             }),
         }),
     ],
-    providers: [AuthService, JwtStrategy],
-    controllers: [AuthController],
+    providers: [AuthService, JwtStrategy, AuthResolver],
     exports: [JwtStrategy],
 })
 export class AuthLoginModule {}
