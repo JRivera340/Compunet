@@ -10,7 +10,6 @@ exports.UserBadgeModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const user_badge_service_1 = require("./user-badge.service");
-const user_badge_controller_1 = require("./user-badge.controller");
 const user_badge_entity_1 = require("./entities/user-badge.entity");
 const user_entity_1 = require("../../auth/user/entities/user.entity");
 const experience_badge_entity_1 = require("../experience-badge/entities/experience-badge.entity");
@@ -20,7 +19,6 @@ exports.UserBadgeModule = UserBadgeModule;
 exports.UserBadgeModule = UserBadgeModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([user_badge_entity_1.UserBadge, user_entity_1.User, experience_badge_entity_1.ExperienceBadge])],
-        controllers: [user_badge_controller_1.UserBadgeController],
         providers: [user_badge_service_1.UserBadgeService],
         exports: [user_badge_service_1.UserBadgeService],
     })

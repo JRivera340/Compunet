@@ -10,7 +10,7 @@ exports.ReplyModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const reply_service_1 = require("./reply.service");
-const reply_controller_1 = require("./reply.controller");
+const reply_resolver_1 = require("./reply.resolver");
 const reply_entity_1 = require("./entities/reply.entity");
 const post_entity_1 = require("../post/entities/post.entity");
 const user_entity_1 = require("../../auth/user/entities/user.entity");
@@ -21,8 +21,7 @@ exports.ReplyModule = ReplyModule;
 exports.ReplyModule = ReplyModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([reply_entity_1.Reply, post_entity_1.Post, user_entity_1.User]), user_module_1.UserModule],
-        controllers: [reply_controller_1.ReplyController],
-        providers: [reply_service_1.ReplyService],
+        providers: [reply_service_1.ReplyService, reply_resolver_1.ReplyResolver],
     })
 ], ReplyModule);
 //# sourceMappingURL=reply.module.js.map

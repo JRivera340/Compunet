@@ -10,7 +10,6 @@ exports.AttendanceSuppSessionModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const attendance_supp_session_service_1 = require("./attendance-supp-session.service");
-const attendance_supp_session_controller_1 = require("./attendance-supp-session.controller");
 const attendance_supp_session_entity_1 = require("./entities/attendance-supp-session.entity");
 const user_entity_1 = require("../../auth/user/entities/user.entity");
 const supplementary_session_entity_1 = require("../supplementary-sessions/entities/supplementary-session.entity");
@@ -20,7 +19,6 @@ exports.AttendanceSuppSessionModule = AttendanceSuppSessionModule;
 exports.AttendanceSuppSessionModule = AttendanceSuppSessionModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([attendance_supp_session_entity_1.AttendanceSuppSession, user_entity_1.User, supplementary_session_entity_1.SupplementarySession])],
-        controllers: [attendance_supp_session_controller_1.AttendanceSuppSessionController],
         providers: [attendance_supp_session_service_1.AttendanceSuppSessionService],
     })
 ], AttendanceSuppSessionModule);

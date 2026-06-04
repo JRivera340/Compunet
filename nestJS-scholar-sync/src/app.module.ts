@@ -5,8 +5,6 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { GraphQLModule } from '@nestjs/graphql';
 import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
 import { AppResolver } from './app.resolver';
 import { AuthModule } from './auth/auth.module';
 import { BadgeModule } from './badge/badge.module';
@@ -68,7 +66,6 @@ type SupportedDbTypes = 'mysql' | 'postgres';
             },
         }),
     ],
-    controllers: [AppController],
-    providers: [AppService, AppResolver],
+    providers: [AppResolver],
 })
 export class AppModule {}

@@ -9,6 +9,7 @@ export declare class UserService {
     constructor(userRepository: Repository<User>, userBadgeService: UserBadgeService);
     create(createUserDto: CreateUserDto): Promise<User>;
     findAll(): Promise<any>;
+    findAllFull(): Promise<User[]>;
     findOne(id: number): Promise<User>;
     findByEmail(email: string): Promise<User | null>;
     update(id: number, updateUserDto: UpdateUserDto): Promise<User>;

@@ -58,6 +58,9 @@ let UserService = class UserService {
             })),
         }));
     }
+    async findAllFull() {
+        return this.userRepository.find();
+    }
     async findOne(id) {
         const user = await this.userRepository.findOne({ where: { id } });
         if (!user) {

@@ -11,6 +11,7 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 exports.Post = void 0;
 const typeorm_1 = require("typeorm");
+const graphql_1 = require("@nestjs/graphql");
 const user_entity_1 = require("../../../auth/user/entities/user.entity");
 const reply_entity_1 = require("../../reply/entities/reply.entity");
 let Post = class Post {
@@ -23,31 +24,38 @@ let Post = class Post {
 };
 exports.Post = Post;
 __decorate([
+    (0, graphql_1.Field)(() => graphql_1.Int),
     (0, typeorm_1.PrimaryGeneratedColumn)(),
     __metadata("design:type", Number)
 ], Post.prototype, "id", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => user_entity_1.User),
     (0, typeorm_1.ManyToOne)(() => user_entity_1.User, (user) => user.posts, { nullable: false, onDelete: 'CASCADE' }),
     (0, typeorm_1.JoinColumn)({ name: 'user_id' }),
     __metadata("design:type", user_entity_1.User)
 ], Post.prototype, "user", void 0);
 __decorate([
+    (0, graphql_1.Field)(),
     (0, typeorm_1.Column)({ nullable: false, length: 30 }),
     __metadata("design:type", String)
 ], Post.prototype, "title", void 0);
 __decorate([
+    (0, graphql_1.Field)(),
     (0, typeorm_1.Column)({ nullable: false, length: 1000 }),
     __metadata("design:type", String)
 ], Post.prototype, "question", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => graphql_1.GraphQLISODateTime),
     (0, typeorm_1.Column)({ name: 'date_added', type: 'timestamp', nullable: false }),
     __metadata("design:type", Date)
 ], Post.prototype, "dateAdded", void 0);
 __decorate([
+    (0, graphql_1.Field)(() => [reply_entity_1.Reply], { nullable: true }),
     (0, typeorm_1.OneToMany)(() => reply_entity_1.Reply, (reply) => reply.post, { eager: true }),
     __metadata("design:type", Array)
 ], Post.prototype, "replies", void 0);
 exports.Post = Post = __decorate([
+    (0, graphql_1.ObjectType)(),
     (0, typeorm_1.Entity)('posts')
 ], Post);
 //# sourceMappingURL=post.entity.js.map

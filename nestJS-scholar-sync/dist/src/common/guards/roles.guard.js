@@ -13,6 +13,7 @@ exports.RolesGuard = void 0;
 const common_1 = require("@nestjs/common");
 const core_1 = require("@nestjs/core");
 const roles_decorator_1 = require("../decorators/roles.decorator");
+const get_request_1 = require("../utils/get-request");
 let RolesGuard = class RolesGuard {
     reflector;
     constructor(reflector) {
@@ -25,7 +26,7 @@ let RolesGuard = class RolesGuard {
         ]);
         if (!required || required.length === 0)
             return true;
-        const req = context.switchToHttp().getRequest();
+        const req = (0, get_request_1.getRequest)(context);
         const user = req.user;
         if (!user)
             throw new common_1.ForbiddenException('Not authenticated');

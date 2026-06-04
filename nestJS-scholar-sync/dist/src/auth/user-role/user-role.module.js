@@ -12,7 +12,6 @@ const typeorm_1 = require("@nestjs/typeorm");
 const user_entity_1 = require("../user/entities/user.entity");
 const role_entity_1 = require("../role/entities/role.entity");
 const user_role_service_1 = require("./user-role.service");
-const user_role_controller_1 = require("./user-role.controller");
 const user_role_entity_1 = require("./entities/user-role.entity");
 let UserRoleModule = class UserRoleModule {
 };
@@ -20,7 +19,6 @@ exports.UserRoleModule = UserRoleModule;
 exports.UserRoleModule = UserRoleModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([user_role_entity_1.UserRole, user_entity_1.User, role_entity_1.Role])],
-        controllers: [user_role_controller_1.UserRoleController],
         providers: [user_role_service_1.UserRoleService],
         exports: [user_role_service_1.UserRoleService],
     })

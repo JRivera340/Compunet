@@ -10,7 +10,7 @@ exports.PostModule = void 0;
 const common_1 = require("@nestjs/common");
 const typeorm_1 = require("@nestjs/typeorm");
 const post_service_1 = require("./post.service");
-const post_controller_1 = require("./post.controller");
+const post_resolver_1 = require("./post.resolver");
 const post_entity_1 = require("./entities/post.entity");
 const user_entity_1 = require("../../auth/user/entities/user.entity");
 const user_module_1 = require("../../auth/user/user.module");
@@ -20,8 +20,7 @@ exports.PostModule = PostModule;
 exports.PostModule = PostModule = __decorate([
     (0, common_1.Module)({
         imports: [typeorm_1.TypeOrmModule.forFeature([post_entity_1.Post, user_entity_1.User]), user_module_1.UserModule],
-        controllers: [post_controller_1.PostController],
-        providers: [post_service_1.PostService],
+        providers: [post_service_1.PostService, post_resolver_1.PostResolver],
     })
 ], PostModule);
 //# sourceMappingURL=post.module.js.map
