@@ -1,9 +1,13 @@
+import { join } from 'path';
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
+import { GraphQLModule } from '@nestjs/graphql';
+import { ApolloDriver, ApolloDriverConfig } from '@nestjs/apollo';
 
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
+import { AppResolver } from './app.resolver';
 import { AuthModule } from './auth/auth.module';
 import { BadgeModule } from './badge/badge.module';
 import { InteractionModule } from './interaction/interaction.module';
@@ -20,6 +24,13 @@ type SupportedDbTypes = 'mysql' | 'postgres';
         InteractionModule,
         SupplementarySessionModule,
         ConfigModule.forRoot({ isGlobal: true }),
+        GraphQLModule.forRoot<ApolloDriverConfig>({
+            driver: ApolloDriver,
+            autoSchemaFile: join(process.cwd(), 'src/schema.gql'),
+            sortSchema: true,
+            introspection: true,
+            context: ({ req }) => ({ req }),
+        }),
         // Making the TypeOrmModule to configure the database and tell which entities we want to use
         // This will make the tables in the database and create the repositories to interact with the DB
         TypeOrmModule.forRootAsync({
@@ -36,7 +47,7 @@ type SupportedDbTypes = 'mysql' | 'postgres';
                         // Enable SSL for cloud Postgres providers (skip cert validation)
                         ssl: { rejectUnauthorized: false },
                         extra: { ssl: { rejectUnauthorized: false } },
-                        entities: [__dirname + '/../**/*.entity.js'],
+                        autoLoadEntities: true,
                         synchronize: configService.get<boolean>('DB_SYNCHRONIZE'),
                     };
                 }
@@ -51,13 +62,13 @@ type SupportedDbTypes = 'mysql' | 'postgres';
                     username: configService.get<string>('DB_USERNAME'),
                     password: configService.get<string>('DB_PASSWORD'),
                     database: configService.get<string>('DB_DATABASE'),
-                    entities: [__dirname + '/../**/*.entity.js'],
+                    autoLoadEntities: true,
                     synchronize: configService.get<boolean>('DB_SYNCHRONIZE'),
                 };
             },
         }),
     ],
     controllers: [AppController],
-    providers: [AppService],
+    providers: [AppService, AppResolver],
 })
 export class AppModule {}
