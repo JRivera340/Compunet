@@ -13,6 +13,14 @@ input CreatePostDto {
   userId: Int!
 }
 
+input CreateReplyDto {
+  dateAdded: DateTime
+  postId: Int!
+  replyId: Int
+  replyMessage: String!
+  userId: Int!
+}
+
 input CreateUserDto {
   email: String!
   firstName: String!
@@ -36,13 +44,18 @@ type MessageResponse {
 
 type Mutation {
   createPost(input: CreatePostDto!): Post!
+  createReply(input: CreateReplyDto!): Reply!
   createUser(input: CreateUserDto!): User!
+  likeReply(id: Int!): Reply!
   login(input: UserLoginDto!): AuthPayload!
   logout: MessageResponse!
   removePost(id: Int!): MessageResponse!
+  removeReply(id: Int!): MessageResponse!
   removeUser(id: Int!): MessageResponse!
   updatePost(id: Int!, input: UpdatePostDto!): Post!
+  updateReply(id: Int!, input: UpdateReplyDto!): Reply!
   updateUser(id: Int!, input: UpdateUserDto!): User!
+  validateReply(id: Int!): Reply!
 }
 
 type Post {
@@ -58,6 +71,8 @@ type Query {
   healthCheck: String!
   post(id: Int!): Post!
   posts: [Post!]!
+  replies: [Reply!]!
+  reply(id: Int!): Reply!
   user(id: Int!): User!
   users: [User!]!
 }
@@ -78,6 +93,14 @@ input UpdatePostDto {
   dateAdded: DateTime
   question: String
   title: String
+  userId: Int
+}
+
+input UpdateReplyDto {
+  dateAdded: DateTime
+  postId: Int
+  replyId: Int
+  replyMessage: String
   userId: Int
 }
 
